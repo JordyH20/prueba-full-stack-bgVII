@@ -1,0 +1,6 @@
+@WebAPI_Jordy_Hurtado_2026_11_13_HostAddress = http://localhost:5257
+
+GET {{WebAPI_Jordy_Hurtado_2026_11_13_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

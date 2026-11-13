@@ -1,0 +1,80 @@
+
+# =====================================
+# VISUAL STUDIO / .NET
+# =====================================
+.vs/
+**/.vs/
+bin/
+**/bin/
+obj/
+**/obj/
+*.user
+*.suo
+*.cache
+*.pdb
+*.dll
+*.exe
+
+# =====================================
+# ANGULAR / NODE.JS
+# =====================================
+node_modules/
+**/node_modules/
+
+dist/
+**/dist/
+
+.angular/
+**/.angular/
+
+coverage/
+**/coverage/
+
+.npm/
+**/.npm/
+
+*.tsbuildinfo
+
+# =====================================
+# CONFIGURACIONES LOCALES
+# =====================================
+.env
+.env.*
+!.env.example
+
+# =====================================
+# ARCHIVOS TEMPORALES
+# =====================================
+*.tmp
+*.temp
+*.log
+*.bak
+
+# =====================================
+# SISTEMA OPERATIVO
+# =====================================
+Thumbs.db
+.DS_Store
+Desktop.ini
+
+# =====================================
+# EDITORES
+# =====================================
+.idea/
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# =====================================
+# ARCHIVOS DE CONFIGURACION LOCAL
+# =====================================
+appsettings.Development.json
+appsettings.Local.json
+
+# =====================================
+# ARCHIVOS GENERADOS
+# =====================================
+*.log.*
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
