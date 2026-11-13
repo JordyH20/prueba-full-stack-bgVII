@@ -31,7 +31,10 @@ namespace WebAPI_Jordy_Hurtado_2026_11_13.Controllers
             var evento = await _eventosService.GetEventoByIdAsync(eventId);
             if (evento == null)
             {
-                return NotFound();
+                return NotFound(new
+                {
+                    mensaje = $"No existe un evento con el ID {eventId}"
+                });
             }
             return Ok(evento);
         }

@@ -30,7 +30,10 @@ namespace WebAPI_Jordy_Hurtado_2026_11_13.Controllers
             var registroEvento = await _registrarEventosService.GetRegistroEventoByIdAsync(registrationId);
             if (registroEvento == null)
             {
-                return NotFound();
+                return NotFound(new
+                {
+                    mensaje = $"No existe un registro de evento con el ID {registrationId}"
+                });
             }
             return Ok(registroEvento);
         }
@@ -64,9 +67,14 @@ namespace WebAPI_Jordy_Hurtado_2026_11_13.Controllers
             var updateRegistro = await _registrarEventosService.GetRegistroEventoByIdAsync(id);
             if (updateRegistro == null)
             {
-                return NoContent();
+                return NotFound( new
+                {
+                    mensaje = $"No existe un registro de evento con el ID {id}"
+                });
             }
 
+
+         
             await _registrarEventosService.UpdateRegistroEventoAsync(id, dto);
             return NoContent();
         }
