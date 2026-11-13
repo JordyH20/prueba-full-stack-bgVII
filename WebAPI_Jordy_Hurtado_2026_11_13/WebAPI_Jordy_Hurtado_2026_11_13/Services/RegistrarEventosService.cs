@@ -14,18 +14,16 @@ namespace WebAPI_Jordy_Hurtado_2026_11_13.Services
         }
 
 
-        public async Task<RegistrarEventos> getAllRegistroEventos()
+        public async Task<IEnumerable<RegistrarEventos>> getAllRegistroEventos()
         {
             using var connection = _dataDapper.GetConnection();
             var query = "SELECT * FROM RegistrosEventos";
             var registroEventos = await connection.QueryAsync<RegistrarEventos>(query);
-            return registroEventos.FirstOrDefault() ?? new RegistrarEventos();
+            return registroEventos;
         }
-
 
         public async Task <RegistrarEventos> CreateRegistroEventos (RegistrarEventoRequest dto)
         {
-            
             using var connection = _dataDapper.GetConnection();
             var query = @"INSERT INTO RegistrosEventos (EventId, UserId, RegistrationDate, Estado)
                           VALUES (@EventId, @UserId, @RegistrationDate, @Estado);

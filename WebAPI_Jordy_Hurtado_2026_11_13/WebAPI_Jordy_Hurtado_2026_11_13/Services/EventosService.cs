@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using Microsoft.AspNetCore.Mvc;
 using WebAPI_Jordy_Hurtado_2026_11_13.Data;
 using WebAPI_Jordy_Hurtado_2026_11_13.Dtos.Request;
 using WebAPI_Jordy_Hurtado_2026_11_13.Models;
@@ -34,7 +35,7 @@ namespace WebAPI_Jordy_Hurtado_2026_11_13.Services
 
 
 
-        public async Task<Eventos> CreateEventos (EventosRequest dto)
+        public async Task<Eventos> CreateEventos ([FromBody] EventosRequest dto)
         {
             using var connection = _dataDapper.GetConnection();
             var query = @"INSERT INTO DB_Eventos (Titulo, Descrpcion, FechaInicio, FechaFin, Location, OrganizerId)
