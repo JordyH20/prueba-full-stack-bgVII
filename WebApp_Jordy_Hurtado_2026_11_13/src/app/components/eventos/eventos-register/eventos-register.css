@@ -1,0 +1,54 @@
+.container {
+  max-width: 900px;
+  margin: 24px auto;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+}
+
+.formulario {
+  display: grid;
+  gap: 12px;
+  max-width: 420px;
+}
+
+label {
+  display: grid;
+  gap: 4px;
+}
+
+input,
+button {
+  padding: 8px;
+}
+
+button {
+  cursor: pointer;
+}
+
+.mensaje {
+  margin: 12px 0;
+}
+
+.exito {
+  color: green;
+}
+
+.error {
+  color: red;
+}
+
+.tabla-contenedor {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 8px;
+  border: 1px solid #ccc;
+  text-align: left;
+}

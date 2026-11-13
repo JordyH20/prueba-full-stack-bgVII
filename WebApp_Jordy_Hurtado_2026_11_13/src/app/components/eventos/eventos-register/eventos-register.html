@@ -1,0 +1,70 @@
+<section class="container">
+  <h1>Registro de eventos</h1>
+
+  <form class="formulario" (ngSubmit)="guardarRegistro()">
+    <label>
+      ID del evento
+      <input name="eventId" type="number" min="1" [(ngModel)]="nuevoRegistro.eventId" required />
+    </label>
+
+    <label>
+      ID del usuario
+      <input name="userId" type="number" min="1" [(ngModel)]="nuevoRegistro.userId" required />
+    </label>
+
+    <label>
+      Fecha de registro
+      <input name="registrationDate" type="datetime-local" [(ngModel)]="nuevoRegistro.registrationDate" required />
+    </label>
+
+    <label>
+      Estado
+      <input name="estado" [(ngModel)]="nuevoRegistro.estado" required />
+    </label>
+
+    <button type="submit" [disabled]="guardando">
+      {{ guardando ? 'Guardando...' : 'Guardar registro' }}
+    </button>
+  </form>
+
+  @if (mensaje) {
+    <p class="mensaje exito">{{ mensaje }}</p>
+  }
+  @if (error) {
+    <p class="mensaje error">{{ error }}</p>
+  }
+
+  <h2>Registros guardados</h2>
+  @if (cargando) {
+    <p class="mensaje">Cargando registros...</p>
+  }
+
+  <div class="tabla-contenedor">
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Evento</th>
+          <th>Usuario</th>
+          <th>Fecha</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (registro of registros(); track registro.registrationId) {
+          <tr>
+            <td>{{ registro.registrationId }}</td>
+            <td>{{ registro.eventId }}</td>
+            <td>{{ registro.userId }}</td>
+            <td>{{ registro.registrationDate | date: 'dd/MM/yyyy HH:mm' }}</td>
+            <td>{{ registro.estado }}</td>
+          </tr>
+        } @empty {
+          <tr>
+            <td colspan="5">Sin registros guardados</td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</section>
