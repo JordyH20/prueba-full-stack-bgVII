@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using WebAPI_Jordy_Hurtado_2026_11_13.Data;
 using WebAPI_Jordy_Hurtado_2026_11_13.Dtos.Request;
+using WebAPI_Jordy_Hurtado_2026_11_13.Exceptions;
 using WebAPI_Jordy_Hurtado_2026_11_13.Models;
 
 namespace WebAPI_Jordy_Hurtado_2026_11_13.Services
@@ -38,6 +39,13 @@ namespace WebAPI_Jordy_Hurtado_2026_11_13.Services
         public async Task<Eventos> CreateEventos ([FromBody] EventosRequest dto)
         {
             using var connection = _dataDapper.GetConnection();
+
+            if (dto.FechaFin <= dto.FechaInicio)
+            {
+                throw new BusinessException(
+                    "La fecha de finalización debe ser posterior a la fecha de inicio.");
+            }
+
             var query = @"INSERT INTO DB_Eventos (Titulo, Descrpcion, FechaInicio, FechaFin, Location, OrganizerId)
                           VALUES (@Titulo, @Descrpcion, @FechaInicio, @FechaFin, @Location, @OrganizerId);
                           SELECT CAST(SCOPE_IDENTITY() as int);";
